@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="untitled_Session" name="session-view" extends="_local">
+        <property name="speaker" view="_minimal">
+            <property name="lastName"/>
+        </property>
+    </view>
+    <view entity="untitled_Session" name="session-view_1" extends="_minimal">
+        <property name="topic"/>
+        <property name="startDate"/>
+        <property name="speaker" view="_minimal">
+            <property name="lastName"/>
+            <property name="firstName"/>
+        </property>
+    </view>
+    <view entity="untitled_Session" name="session-view_2" extends="_minimal">
+        <property name="topic"/>
+        <property name="startDate"/>
+        <property name="speaker" view="_minimal">
+            <property name="lastName"/>
+        </property>
+    </view>
+    <view entity="untitled_Session" name="session-view_3" extends="_local"/>
+    <view entity="untitled_Session" name="session-view_4" extends="_minimal">
+        <property name="topic"/>
+        <property name="startDate"/>
+        <property name="endDate"/>
+        <property name="speaker" view="_minimal">
+            <property name="firstName"/>
+            <property name="lastName"/>
+            <property name="email"/>
+        </property>
+    </view>
+</views>

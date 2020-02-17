@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.untitled.web.screens.session">
+    <data>
+        <instance id="sessionDc"
+                  class="com.company.untitled.entity.Session"
+                  view="session-view_4">
+            <loader/>
+        </instance>
+        <collection id="speakersDc" class="com.company.untitled.entity.Speaker" view="_local">
+            <loader id="speakersLc">
+                <query>
+                    <![CDATA[select e from untitled_Speaker e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="sessionDc">
+            <column width="250px">
+                <textField id="topicField" property="topic"/>
+                <dateField id="startDateField" property="startDate"/>
+                <dateField id="endDateField" property="endDate"/>
+                <lookupPickerField id="speakerField" optionsContainer="speakersDc" property="speaker"
+                                   captionProperty="">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                    </actions>
+                </lookupPickerField>
+                <textField id="descriptionField" property="description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
