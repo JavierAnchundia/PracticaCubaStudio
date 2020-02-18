@@ -17,16 +17,15 @@
             </loader>
         </collection>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="380"
+                width="500"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="sessionDc">
             <column width="250px">
                 <textField id="topicField" property="topic"/>
                 <dateField id="startDateField" property="startDate"/>
-                <dateField id="endDateField" property="endDate"/>
                 <lookupPickerField id="speakerField" optionsContainer="speakersDc" property="speaker"
-                                   captionProperty="">
+                                   captionProperty="nombreCompleto">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                     </actions>

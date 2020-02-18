@@ -6,9 +6,12 @@
     <data readOnly="true">
         <collection id="sessionsDc"
                     class="com.company.untitled.entity.Session"
-                    view="_local">
+                    view="session-view_4"> <!-- _local -->>
             <loader id="sessionsDl">
                 <query>
+                    <!-- Fijate que aqui no esta diciendo que campos va a traer, este man le dice que traer segun el view de arriba
+                    es decir en este caso traera los campos que esten en el session-view-4
+                    -->
                     <![CDATA[select e from untitled_Session e]]>
                 </query>
             </loader>
@@ -16,35 +19,48 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="sessionsTable"
+    <layout expand="sessionsTab"
             spacing="true">
         <filter id="filter"
                 applyTo="sessionsTable"
                 dataLoader="sessionsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="sessionsTable"
-                    width="100%"
-                    dataContainer="sessionsDc">
-            <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
-            </actions>
-            <columns>
-                <column id="topic"/>
-                <column id="startDate"/>
-                <column id="endDate"/>
-                <column id="description"/>
-            </columns>
-            <rowsCount/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
-                <button id="createBtn" action="sessionsTable.create"/>
-                <button id="editBtn" action="sessionsTable.edit"/>
-                <button id="removeBtn" action="sessionsTable.remove"/>
-            </buttonsPanel>
-        </groupTable>
+        <tabSheet id="sessionsTab">
+            <tab caption="Sessions Calendar" margin="true,false,false,false" spacing="true" id="calendarTab"
+                 expand="sessionsCalendar">
+
+                <calendar id="sessionsCalendar" dataContainer="sessionsDc" startDateProperty="startDate"
+                          endDateProperty="endDate"  captionProperty="topic" descriptionProperty="description"
+                          firstVisibleHourOfDay="8" lastVisibleHourOfDay="18" navigationButtonsVisible="true"
+                          width="100%" height="100%"
+                />
+            </tab>
+            <tab caption="Sessions Table" margin="true,false,false,false" spacing="true" id="tableTab">
+                <groupTable id="sessionsTable"
+                                    width="100%"
+                                    dataContainer="sessionsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="topic"/>
+                        <column id="startDate"/>
+                        <column id="endDate"/>
+                        <column id="description"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="sessionsTable.create"/>
+                        <button id="editBtn" action="sessionsTable.edit"/>
+                        <button id="removeBtn" action="sessionsTable.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </tab>
+        </tabSheet>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
